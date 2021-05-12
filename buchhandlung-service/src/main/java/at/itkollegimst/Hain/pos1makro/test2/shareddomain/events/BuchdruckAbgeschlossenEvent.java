@@ -1,9 +1,9 @@
 package at.itkollegimst.Hain.pos1makro.test2.shareddomain.events;
 
-public class BuchBestelltEvent {
+public class BuchdruckAbgeschlossenEvent {
     private String bestellid;
-    public  BuchBestelltEvent(){}
-    public  BuchBestelltEvent(String bestellid){
+    public BuchdruckAbgeschlossenEvent(){}
+    public BuchdruckAbgeschlossenEvent(String bestellid){
         this.bestellid=bestellid;
     }
 

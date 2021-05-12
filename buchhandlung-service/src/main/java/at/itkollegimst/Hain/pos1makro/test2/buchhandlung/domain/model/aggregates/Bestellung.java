@@ -15,27 +15,36 @@ public class Bestellung extends AbstractAggregateRoot<Bestellung>{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
     @Column(name = "status")
     @Enumerated(value=EnumType.STRING)
     private BestellungStatus status;
+
+    @Embedded
+    private Bestellid bestellid;
 
     public Bestellung() {
         status = BestellungStatus.UNKNOWN;
 
     }
 
+    public String getBestellid() {
+        return bestellid.getBestellid();
+    }
+
+    public void setBestellid(Bestellid bestellid) {
+        this.bestellid = bestellid;
+    }
+
     public Bestellung(BuchBestellCommand command) {
+        this.bestellid = new Bestellid(command.getBestellid());
         status = BestellungStatus.UNKNOWN;
-        addDomainEvent(new BuchBestelltEvent());
+        addDomainEvent(new BuchBestelltEvent(bestellid.getBestellid()));
         status = BestellungStatus.BESTELLT;
     }
 
     public void addDomainEvent(Object event) {
         registerEvent(event);
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public void setId(Long id) {

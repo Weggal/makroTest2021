@@ -1,10 +1,11 @@
 package at.itkollegimst.Hain.pos1makro.test2.druckerei;
 
-import org.junit.jupiter.api.Test;
+
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BuchhandlungApplicationTests {
+class DruckereiApplicationTests {
 
 	@Test
 	void contextLoads() {
